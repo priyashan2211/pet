@@ -1,3 +1,21 @@
+
+FROM alpine:edge
+
+USER root
+
+RUN apk add openjdk11 
+RUN java --version
+
+#install npm
+#RUN apk update && apk upgrade -y && \
+ #   apk add -y nodejs \
+  #  npm                       # note this one
+RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main/ nodejs=8.9.3-r1
+    
+#RUN \
+#add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing firefox
+	
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
